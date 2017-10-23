@@ -1,0 +1,38 @@
+---
+- name: deploy the python developer software stack
+  hosts: localhost
+  connection: local
+  user: vagrant
+  sudo: true
+
+  tasks:
+
+    - name: Get aptitude for upgrade
+      apt: pkg=aptitude state=present
+
+    - name: Safe system upgrade via aptitude
+      apt: upgrade=safe
+      
+    - name: install base packages
+      apt: pkg={{item}} state=present update_cache=yes cache_valid_time=604800
+      with_items:
+        - git
+        - python-dev
+        - sqlite
+        - pgadmin3
+        - postgresql
+        - libpq-dev
+        - build-essential
+        - python-pip
+        - python3-pip
+
+        # - postgis
+        # install from src to get 2.0
+
+        # rstudio via http://www.rstudio.com/ide/download/desktop
+
+    - name: Install global python requirements
+      pip: name={{item}} state=present
+      with_items:
+        - virtualenv
+        - virtualenvwrapper
