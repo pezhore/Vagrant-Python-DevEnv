@@ -1,7 +1,6 @@
 ---
 - name: Post Vagrant Deploy - Environment Standardization
   hosts: localhost
-  connection: local
   user: vagrant
   become: true
 
@@ -16,9 +15,36 @@
     - name: install tmux
       apt: pkg={{item}} state=present update_cache=yes cache_valid_time=604800
       with_items:
+        - git
+        - python-dev
+        - build-essential
+        - python-pip
+        - python3-pip
         - tmux
+        - vim
+
+    - name: Install global python requirements
+      pip: name={{item}} state=present
+      with_items:
+        - virtualenv
+        - virtualenvwrapper
 
     - name: Pulldown config
       get_url:
         url: https://gist.githubusercontent.com/pezhore/23a8fa5174f59c7b56d70ff7cf02c372/raw/0c8f91c61ec386a636599f795c9408b6720b9e02/.tmux.conf
         dest: /etc/tmux.conf
+
+    - name: Pulldown vim config
+      get_url:
+        url: https://gist.githubusercontent.com/pezhore/9e4a1333ac82a8bf41d9d529a3c4a88f/raw/333a21254a5dc6f14d8c579af2ed57c35646711b/.vimrc
+        dest: /home/vagrant/.vimrc
+    
+    - name: Pulldown bash_aliases
+      get_url:
+        url: https://gist.githubusercontent.com/pezhore/8f2bb97cecd2bc18e987a9fcafc6de33/raw/298f1b5cda584b5a9463ff57c990b1c5f0d30826/.bash_aliases
+        dest: /home/vagrant/.bash_aliases
+    
+    - name: Pulldown bashrc
+      get_url:
+        url: https://gist.githubusercontent.com/pezhore/795d66c0cc628d184fc43c9f9889b8d3/raw/8318ec6b7e645f371d4bf8032ec122b3b930e02c/.bashrc
+        dest: /home/vagrant/.bashrc

@@ -1,21 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-require 'getoptlong'
-
-opts = GetoptLong.new(
-  [ '--custom-option', GetoptLong::OPTIONAL_ARGUMENT ]
-)
-
-customParameter=''
-
-opts.each do |opt, arg|
-  case opt
-    when '--custom-option'
-      customParameter=arg
-  end
-end
-
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
@@ -27,8 +12,8 @@ Vagrant.configure("2") do |devbox|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  devbox.vm.box = "pezhore/Ubuntu-17.04-PyDevEnv"
-  devbox.vm.box_version = '0.0.3'
+  devbox.vm.box = "pezhore/Ubuntu-17.04-Server"
+
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
@@ -59,6 +44,7 @@ Vagrant.configure("2") do |devbox|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   devbox.vm.synced_folder "source", "/home/vagrant/source"
+  devbox.vm.synced_folder ".", "/vagrant"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -86,5 +72,12 @@ Vagrant.configure("2") do |devbox|
   devbox.vm.provision "ansible_local" do |ansible|
     ansible.playbook = "ansible/playbook.yml"
     ansible.verbose  = true
+    ansible.install  = true
+    ansible.limit    = "all"
   end
+
+  devbox.vm.provision "shell", inline: <<-SHELL
+    cd /vagrant && PYTHONUNBUFFERED=1 ANSIBLE_FORCE_COLOR=true ansible-playbook --inventory-file=/tmp/vagrant-ansible/inventory -vvv ansible/playbook.yml
+  
+  SHELL
 end
