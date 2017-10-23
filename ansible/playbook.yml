@@ -1,0 +1,24 @@
+---
+- name: Post Vagrant Deploy - Environment Standardization
+  hosts: localhost
+  connection: local
+  user: vagrant
+  become: true
+
+  tasks:
+
+    - name: Get aptitude for upgrade
+      apt: pkg=aptitude state=present
+
+    - name: Safe system upgrade via aptitude
+      apt: upgrade=safe
+
+    - name: install tmux
+      apt: pkg={{item}} state=present update_cache=yes cache_valid_time=604800
+      with_items:
+        - tmux
+
+    - name: Pulldown config
+      get_url: 
+        url: "https://gist.githubusercontent.com/pezhore/23a8fa5174f59c7b56d70ff7cf02c372/raw/0c8f91c61ec386a636599f795c9408b6720b9e02/.tmux.conf"
+        dest: /etc/tmux.conf
