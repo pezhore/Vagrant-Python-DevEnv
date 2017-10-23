@@ -63,8 +63,12 @@ Vagrant.configure("2") do |devbox|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  # devbox.vm.provision "shell", inline: <<-SHELL
-  #   apt-get update
-  #   apt-get install -y apache2
-  # SHELL
+  #devbox.vm.provision "shell", inline: <<-SHELL
+  #  apt-get update
+  #  apt-get install -y tmux
+  #  wget https://gist.githubusercontent.com/pezhore/23a8fa5174f59c7b56d70ff7cf02c372/raw/0c8f91c61ec386a636599f795c9408b6720b9e02/.tmux.conf
+  #SHELL
+  devbox.vm.provision "ansible_local" do |ansible|
+    ansible.playbook = "ansible/playbook.yml"
+  end
 end
