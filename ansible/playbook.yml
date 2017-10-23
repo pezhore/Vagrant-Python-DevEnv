@@ -19,6 +19,6 @@
         - tmux
 
     - name: Pulldown config
-      get_url: 
-        url: "https://gist.githubusercontent.com/pezhore/23a8fa5174f59c7b56d70ff7cf02c372/raw/0c8f91c61ec386a636599f795c9408b6720b9e02/.tmux.conf"
+      get_url:
+        url: https://gist.githubusercontent.com/pezhore/23a8fa5174f59c7b56d70ff7cf02c372/raw/0c8f91c61ec386a636599f795c9408b6720b9e02/.tmux.conf
         dest: /etc/tmux.conf

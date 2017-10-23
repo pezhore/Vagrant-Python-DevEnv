@@ -1,6 +1,21 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+require 'getoptlong'
+
+opts = GetoptLong.new(
+  [ '--custom-option', GetoptLong::OPTIONAL_ARGUMENT ]
+)
+
+customParameter=''
+
+opts.each do |opt, arg|
+  case opt
+    when '--custom-option'
+      customParameter=arg
+  end
+end
+
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
@@ -70,5 +85,6 @@ Vagrant.configure("2") do |devbox|
   #SHELL
   devbox.vm.provision "ansible_local" do |ansible|
     ansible.playbook = "ansible/playbook.yml"
+    ansible.verbose  = true
   end
 end
