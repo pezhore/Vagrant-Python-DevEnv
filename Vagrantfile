@@ -77,7 +77,7 @@ Vagrant.configure("2") do |devbox|
   end
 
   devbox.vm.provision "shell", inline: <<-SHELL
-    cd /vagrant && PYTHONUNBUFFERED=1 ANSIBLE_FORCE_COLOR=true ansible-playbook --inventory-file=/tmp/vagrant-ansible/inventory -vvv ansible/playbook.yml
+    cd /vagrant && PYTHONUNBUFFERED=1 ANSIBLE_FORCE_COLOR=true ansible-playbook --inventory-file=/tmp/vagrant-ansible/inventory -v ansible/playbook.yml
   
   SHELL
 end
