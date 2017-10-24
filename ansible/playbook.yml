@@ -16,18 +16,25 @@
       apt: pkg={{item}} state=present update_cache=yes cache_valid_time=604800
       with_items:
         - git
-        - python-dev
+        - python3-dev
         - build-essential
-        - python-pip
         - python3-pip
         - tmux
         - vim
+        - cmake
+
+    - name: Alias pip3 to pip
+      file:
+        src: /usr/bin/pip3
+        dest: /usr/bin/pip
+        state: link
 
     - name: Install global python requirements
       pip: name={{item}} state=present
       with_items:
         - virtualenv
         - virtualenvwrapper
+        - flake8  
 
     - name: Pulldown config
       get_url:
@@ -76,9 +83,15 @@
         owner: vagrant
         group: vagrant
 
-    - name: Own source folder
-      file:
-        path: /home/vagrant/source
-        state: directory
-        owner: vagrant
-        group: vagrant
+    - name: Clone down vim syntastic
+      git:
+        repo: https://github.com/vim-syntastic/syntastic.git
+        dest: /home/vagrant/.vim/bundle/syntastic
+        depth: 1
+      become_user: vagrant
+
+    - name: Clone down vim syntastic
+      git:
+        repo: https://github.com/nvie/vim-flake8.git
+        dest: /home/vagrant/.vim/bundle/vim-flake8
+      become_user: vagrant
