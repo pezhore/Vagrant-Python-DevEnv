@@ -38,13 +38,47 @@
       get_url:
         url: https://gist.githubusercontent.com/pezhore/9e4a1333ac82a8bf41d9d529a3c4a88f/raw/333a21254a5dc6f14d8c579af2ed57c35646711b/.vimrc
         dest: /home/vagrant/.vimrc
-    
+        owner: vagrant
+        group: vagrant
+
     - name: Pulldown bash_aliases
       get_url:
         url: https://gist.githubusercontent.com/pezhore/8f2bb97cecd2bc18e987a9fcafc6de33/raw/298f1b5cda584b5a9463ff57c990b1c5f0d30826/.bash_aliases
         dest: /home/vagrant/.bash_aliases
-    
+        owner: vagrant
+        group: vagrant
+
     - name: Pulldown bashrc
       get_url:
         url: https://gist.githubusercontent.com/pezhore/795d66c0cc628d184fc43c9f9889b8d3/raw/8318ec6b7e645f371d4bf8032ec122b3b930e02c/.bashrc
         dest: /home/vagrant/.bashrc
+        owner: vagrant
+        group: vagrant
+
+    - name: Create VIM Autoload
+      file:
+        path: /home/vagrant/.vim/autoload
+        state: directory
+        owner: vagrant
+        group: vagrant
+
+    - name: Create vim bundle
+      file:
+        path: /home/vagrant/.vim/bundle
+        state: directory
+        owner: vagrant
+        group: vagrant
+
+    - name: Install pathogen.vim
+      get_url:
+        url: https://tpo.pe/pathogen.vim
+        dest: /home/vagrant/.vim/autoload/pathogen.vim
+        owner: vagrant
+        group: vagrant
+
+    - name: Own source folder
+      file:
+        path: /home/vagrant/source
+        state: directory
+        owner: vagrant
+        group: vagrant
