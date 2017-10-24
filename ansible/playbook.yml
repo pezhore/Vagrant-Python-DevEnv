@@ -76,22 +76,8 @@
         owner: vagrant
         group: vagrant
 
-    - name: Install pathogen.vim
-      get_url:
-        url: https://tpo.pe/pathogen.vim
-        dest: /home/vagrant/.vim/autoload/pathogen.vim
-        owner: vagrant
-        group: vagrant
-
-    - name: Clone down vim syntastic
+    - name: Install Vundle
       git:
-        repo: https://github.com/vim-syntastic/syntastic.git
-        dest: /home/vagrant/.vim/bundle/syntastic
-        depth: 1
-      become_user: vagrant
-
-    - name: Clone down vim syntastic
-      git:
-        repo: https://github.com/nvie/vim-flake8.git
-        dest: /home/vagrant/.vim/bundle/vim-flake8
+        repo: https://github.com/gmarik/Vundle.vim.git
+        dest: /home/vagrant/.vim/bundle/Vundle.vim
       become_user: vagrant
