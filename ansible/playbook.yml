@@ -12,16 +12,24 @@
     - name: Safe system upgrade via aptitude
       apt: upgrade=safe
 
+    - name: Add vim apt-repo
+      apt_repository:
+        repo: 'ppa:pi-rho/dev'
+
     - name: Install Packages
       apt: pkg={{item}} state=present update_cache=yes cache_valid_time=604800
       with_items:
         - git
+        - python-dev
         - python3-dev
         - build-essential
         - python3-pip
         - tmux
         - vim
         - cmake
+        - python-software-properties
+        - software-properties-common
+        - vim-gtk
 
     - name: Alias pip3 to pip
       file:
@@ -83,10 +91,9 @@
       become_user: vagrant
 
     - name: Install plugins
-      shell: |
-        vim +PluginInstall +qall
-        cd /vagrant/home
-        mkdir ycm_build
-        cd ycm_build
-        cmake -G "Unix Makefiles" . ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
+      command: vim +PluginInstall +qall
+      become_user: vagrant
+    
+    - name: Compile YouCompleteMe
+      command: /home/vagrant/.vim/bundle/YouCompleteMe/install.py --clang-completer
       become_user: vagrant
