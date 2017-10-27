@@ -20,8 +20,11 @@
       apt: pkg={{item}} state=present update_cache=yes cache_valid_time=604800
       with_items:
         - git
+        - python3.6
         - python-dev
         - python3-dev
+        - python3.6-dev
+        - python3.6-venv
         - build-essential
         - python3-pip
         - tmux
@@ -88,6 +91,13 @@
       git:
         repo: https://github.com/gmarik/Vundle.vim.git
         dest: /home/vagrant/.vim/bundle/Vundle.vim
+      become_user: vagrant
+
+    - name: install Git bash completion
+      git:
+        repo: https://github.com/magicmonty/bash-git-prompt.git
+        dest: /home/vagrant/.bash-git-prompt
+        depth: 1
       become_user: vagrant
 
     - name: Install plugins
