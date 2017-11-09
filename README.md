@@ -31,10 +31,10 @@ The `vagrant up` command will attempt to use ansible for post provisioning to do
   * virtualenv
   * virtualenvwrapper
   * flake8
-* Pulldown tmux config from https://gist.githubusercontent.com/pezhore/23a8fa5174f59c7b56d70ff7cf02c372/raw/.tmux.conf
-* Pulldown vim config from https://gist.githubusercontent.com/pezhore/9e4a1333ac82a8bf41d9d529a3c4a88f/raw/.vimrc
-* Pulldown bash\_aliases from https://gist.githubusercontent.com/pezhore/8f2bb97cecd2bc18e987a9fcafc6de33/raw/.bash_aliases
-* Pulldown bashrc from https://gist.githubusercontent.com/pezhore/795d66c0cc628d184fc43c9f9889b8d3/raw/.bashrc
+* Pulldown tmux config from [gist](https://gist.githubusercontent.com/pezhore/23a8fa5174f59c7b56d70ff7cf02c372/raw/.tmux.conf)
+* Pulldown vim config from [gist](https://gist.githubusercontent.com/pezhore/9e4a1333ac82a8bf41d9d529a3c4a88f/raw/.vimrc)
+* Pulldown bash\_aliases from [gist](https://gist.githubusercontent.com/pezhore/8f2bb97cecd2bc18e987a9fcafc6de33/raw/.bash_aliases)
+* Pulldown bashrc from [gist](https://gist.githubusercontent.com/pezhore/795d66c0cc628d184fc43c9f9889b8d3/raw/.bashrc)
 * Create VIM Autoload folder
 * Create vim bundle folder
 * Install Vundle
