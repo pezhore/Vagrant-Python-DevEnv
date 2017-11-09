@@ -17,6 +17,11 @@ Vagrant.configure("2") do |devbox|
   # argument is a set of non-required options.
   devbox.vm.synced_folder "source", "/home/vagrant/source"
   devbox.vm.synced_folder ".", "/vagrant"
+  
+  # Uncomment this block if you want to fire up a GUI for workstation
+  #devbox.vm.provider "vmware_workstation" do |v|
+  #  v.gui = true
+  #end
 
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
