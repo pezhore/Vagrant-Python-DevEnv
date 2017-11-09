@@ -73,16 +73,7 @@
       "scripts/ubuntu/virtualbox.sh",
       "scripts/ubuntu/vmware.sh",
       "scripts/common/vagrant.sh",
-      "scripts/common/sshd.sh"
-    ]
-  },
-  {
-    "type": "ansible-local",
-    "playbook_file": "ansible/pythondev.yml"
-  },
-  {
-    "type": "shell",
-    "scripts": [
+      "scripts/common/sshd.sh",
       "scripts/ubuntu/cleanup.sh",
       "scripts/common/minimize.sh"
     ]
