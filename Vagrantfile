@@ -5,6 +5,8 @@
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
+ENV["LC_ALL"] = "en_US.UTF-8"
+
 Vagrant.configure("2") do |devbox|
 
   # Every Vagrant development environment requires a box. You can search for
@@ -17,6 +19,8 @@ Vagrant.configure("2") do |devbox|
   # argument is a set of non-required options.
   devbox.vm.synced_folder "source", "/home/vagrant/source"
   devbox.vm.synced_folder ".", "/vagrant"
+
+  devbox.vm.network "forwarded_port", guest: 5000, host: 5000
   
   # Uncomment this block if you want to fire up a GUI for workstation
   devbox.vm.provider "vmware_workstation" do |v|
