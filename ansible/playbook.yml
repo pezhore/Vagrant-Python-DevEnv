@@ -73,14 +73,14 @@
         owner: vagrant
         group: vagrant
 
-    - name: Create VIM Autoload
+    - name: Create vim autoload folder
       file:
         path: /home/vagrant/.vim/autoload
         state: directory
         owner: vagrant
         group: vagrant
 
-    - name: Create vim bundle
+    - name: Create vim bundle folder
       file:
         path: /home/vagrant/.vim/bundle
         state: directory
@@ -93,14 +93,14 @@
         dest: /home/vagrant/.vim/bundle/Vundle.vim
       become_user: vagrant
 
-    - name: install Git bash completion
+    - name: install Git Bash Prompt
       git:
         repo: https://github.com/magicmonty/bash-git-prompt.git
         dest: /home/vagrant/.bash-git-prompt
         depth: 1
       become_user: vagrant
 
-    - name: Install plugins
+    - name: Install VIM plugins
       command: vim +PluginInstall +qall
       become_user: vagrant
     
