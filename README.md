@@ -41,3 +41,4 @@ The `vagrant up` command will attempt to use ansible for post provisioning to do
 * Install Git bash completion
 * Install VIM plugins
 * Compile [YouCompleteMe](http://valloric.github.io/YouCompleteMe/)
+
