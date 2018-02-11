@@ -66,6 +66,13 @@
         owner: vagrant
         group: vagrant
 
+    - name: Pulldown inputrc
+      get_url:
+        url: https://gist.githubusercontent.com/pezhore/776ca1b7a1d1cec8c33ed066e0deb1e2/raw/.inputrc 
+        dest: /home/vagrant/.intputrc
+        owner: vagrant
+        group: vagrant
+
     - name: Pulldown bashrc
       get_url:
         url: https://gist.githubusercontent.com/pezhore/795d66c0cc628d184fc43c9f9889b8d3/raw/.bashrc
