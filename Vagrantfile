@@ -11,7 +11,7 @@ Vagrant.configure("2") do |devbox|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  devbox.vm.box = "pezhore/Ubuntu-17.04-Server"
+  devbox.vm.box = "bento/ubuntu-17.10"
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
