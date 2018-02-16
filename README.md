@@ -2,7 +2,7 @@
 
 ## Overview
 
-Vagrant config for Ubuntu 17.04 Pthon3 development environment. Pulls down a minimal Ubuntu 17.04 server image, installs/configures via ansible playbook. Also includes a packer build template that can be used for future upgrades/builds.
+Vagrant config for Ubuntu 17.04 Python3 development environment. Pulls down a minimal Ubuntu 17.10 server image, installs/configures via ansible playbook. Also includes a packer build template that can be used for future upgrades/builds.
 
 ## Post Provision Actions
 
@@ -42,3 +42,8 @@ The `vagrant up` command will attempt to use ansible for post provisioning to do
 * Install VIM plugins
 * Compile [YouCompleteMe](http://valloric.github.io/YouCompleteMe/)
 
+## Suggested use
+
+I've included an empty `source` folder that is mounted in the vagrant user's home directory. This can be used for storing code in a more permanent location. If a box needs to be destroyed/upgraded any development work in the `source` folder will be preserved.
+
+Typically, I'll create a new folder under source for my python project, then use venv to setup a contained python environment for each source.
