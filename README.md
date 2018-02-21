@@ -2,7 +2,7 @@
 
 ## Overview
 
-Vagrant config for Ubuntu 17.04 Python3 development environment. Pulls down a minimal Ubuntu 17.10 server image, installs/configures via ansible playbook. Also includes a packer build template that can be used for future upgrades/builds.
+Vagrant config for Ubuntu 17.10 Python3 development environment. Pulls down a minimal Ubuntu 17.10 server image, installs/configures via ansible playbook. Also includes a packer build template that can be used for future upgrades/builds.
 
 ## Post Provision Actions
 
