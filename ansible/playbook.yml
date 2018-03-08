@@ -69,7 +69,7 @@
     - name: Pulldown inputrc
       get_url:
         url: https://gist.githubusercontent.com/pezhore/776ca1b7a1d1cec8c33ed066e0deb1e2/raw/.inputrc 
-        dest: /home/vagrant/.intputrc
+        dest: /home/vagrant/.inputrc
         owner: vagrant
         group: vagrant
 
